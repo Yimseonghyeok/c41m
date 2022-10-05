@@ -14,8 +14,8 @@ void setHeader(char* header, char h_buf[]);
 int main(int argc, char* argv[]) {
 	
 	struct sockaddr_in addr; //sockaddr_in 구조체 변수 선언
-	char header[1024] = { 0 };// 헤더 배열 선언, 0으로 초기화
-	char h_buf[1024]; // HTML 버퍼 선언
+	char header[500] = { 0 };// 헤더 배열 선언, 0으로 초기화
+	char h_buf[500]; // HTML 버퍼 선언
 
 	int client; // Client 변수 선언
 	int proc; // Process  변수 선언
@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
 
 void setHeader(char* header, char h_buf[]) {
 	FILE* fp=fopen("http.html","r"); // 읽기 모드로 열어서 파일 포인터 설정
-	fgets(h_buf,1024,fp); // 담을 변수, 담을 수, 파일 포인터
+	fgets(h_buf,500,fp); // 담을 변수, 담을 수, 파일 포인터
 	fclose(fp); // 연 파일 닫기
 	// 인자의 값을 출력하는 결과를 header에 저장
 	sprintf(header, ENTITY, 200, "OK", strlen(h_buf), "text/html", h_buf);
